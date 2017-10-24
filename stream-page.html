@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Live Streaming</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="http://www.iconsdb.com/icons/preview/purple/wifi-3-xxl.png">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/6.2.7/video-js.css">
+    <link rel="stylesheet" type="text/css" href="logo.css">
+    <link rel="stylesheet" type="text/css" href="stream-page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://vjs.zencdn.net/6.2.7/video.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+    <script src="js/webrtc.js"></script>
+    <script src="js/rtc-controller.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="wrapper">
+            <nav id="nav-bar" class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand" id="logo">
+                        <li><a href=""><span>LIVE</span></a></li>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="stream-page.html">Stream now</a></li>
+                        <li><a href="call-page.html">Call now</a></li>
+                        <li><a href="group-call-page.html">Group call</a></li>
+                        <li><a href="karaoke-page.html">Karaoke</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img id="fb-pic" src=""><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Infomation</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="section">
+                <video style="max-width: 1920px;" id="stream-video" class="video-js vjs-default-skin" controls preload autobuffer poster='' data-setup='{ "aspectRatio":"16:9", "playbackRates": [] }'>
+                    <source src="demo.mp4" type='video/mp4' />
+                    <source src="" type='video/webm' />
+                </video>
+                <div class="video-detail">
+                    <h3>Lạc Trôi - Sơn Tùng MTP</h3>
+                    <h4>Watching: 25000 people</h4>
+                    <hr>
+                </div>
+            </div>
+            <div class="aside">
+                <!-- <div class="chat-box">
+                    <div class="chat-box__form">
+                        <form action="" method="POST" class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Type here...............">
+                                <button class="btn btn-link">
+                                    <span class="glyphicon glyphicon-send">
+
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+                <div class="bodyDiv">
+                    <div id="vid-box"></div>
+                    <div id="stream-info" hidden="true">
+                        <button id="end" onclick="end()" hidden="true">Done</button>
+                        <img src="img/person_dark.png" />
+                        <span id="here-now">0</span>
+                    </div>
+                    <form name="streamForm" id="stream" action="#" onsubmit="return errWrap(stream,this);">
+                        <span class="input input--nao">
+        <input class="input__field input__field--nao" type="text" name="streamname" placeholder="Enter Stream Name" id="streamname"/>
+                <label class="input__label input__label--nao" for="streamname">
+                    <span class="input__label-content input__label-content--nao">        
+                    </span>
+                        </label>
+                        <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+                        </svg>
+                        </span>
+                        <button class="cbutton cbutton--effect-radomir" type="submit" value="Stream" name="stream_submit" style="margin-top: 40px; margin-left:-10px">
+                            <i class="cbutton__icon fa fa-fw fa fa fa-video-camera"></i>
+                        </button>
+                    </form>
+                    <form name="watchForm" id="watch" action="#" onsubmit="return errWrap(watch,this);">
+                        <span class="input input--nao">
+        <input class="input__field input__field--nao" type="text" name="number" placeholder="Enter Stream To Watch!"/>
+                <label class="input__label input__label--nao" for="number">
+                    <span class="input__label-content input__label-content--nao">        
+                    </span>
+                        </label>
+                        <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+                        </svg>
+                        </span>
+                        <button class="cbutton cbutton--effect-radomir" type="submit" value="Watch" style="margin-top: 40px; margin-left:-10px">
+                            <i class="cbutton__icon fa fa-fw fa fa-eye"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript" src="stream-controller.js"></script>
+        </div>
+        <div class="footer">
+            <div class="list-stream-video">
+                <div class="list-stream-video__item">
+                    <div class="list-stream-video__item__inner">
+                        <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/21371116_465042480549247_7855718650456986708_n.jpg?oh=e8493b587b340fce44570cad5f4e724b&oe=5A71B744">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> 1000 lượt xem</p>
+                        <a href="#"><h3>Đón trung thu sớm với bánh bí nướng đỏ</h3></a>
+                    </div>
+                </div>
+                <div class="list-stream-video__item">
+                    <div class="list-stream-video__item__inner">
+                        <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/21371116_465042480549247_7855718650456986708_n.jpg?oh=e8493b587b340fce44570cad5f4e724b&oe=5A71B744">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> 1000 lượt xem</p>
+                        <a href="#"><h3>Đón trung thu sớm với bánh bí nướng đỏ</h3></a>
+                    </div>
+                </div>
+                <div class="list-stream-video__item">
+                    <div class="list-stream-video__item__inner">
+                        <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/21371116_465042480549247_7855718650456986708_n.jpg?oh=e8493b587b340fce44570cad5f4e724b&oe=5A71B744">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> 1000 lượt xem</p>
+                        <a href="#"><h3>Đón trung thu sớm với bánh bí nướng đỏ</h3></a>
+                    </div>
+                </div>
+                <div class="list-stream-video__item">
+                    <div class="list-stream-video__item__inner">
+                        <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/21371116_465042480549247_7855718650456986708_n.jpg?oh=e8493b587b340fce44570cad5f4e724b&oe=5A71B744">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> 1000 lượt xem</p>
+                        <a href="#"><h3>Đón trung thu sớm với bánh bí nướng đỏ</h3></a>
+                    </div>
+                </div>
+                <div class="list-stream-video__item">
+                    <div class="list-stream-video__item__inner">
+                        <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/21371116_465042480549247_7855718650456986708_n.jpg?oh=e8493b587b340fce44570cad5f4e724b&oe=5A71B744">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> 1000 lượt xem</p>
+                        <a href="#"><h3>Đón trung thu sớm với bánh bí nướng đỏ</h3></a>
+                    </div>
+                </div>
+            </div>
+            <address>
+                Copyright &#9400; K60-N team. All rights reserved
+                <br> 144 Xuan Thuy, Cau Giay, Ha Noi
+            </address>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var FacebookId = 100011304962089;
+        $("#fb-pic").attr('src', 'https://graph.facebook.com/' + FacebookId + '/picture?w‌​idth=30&height=30');
+    });
+    $('a').click(function(e) {
+        $('body').addClass('animated fadeOutUp');
+        e.preventDefault(); // prevent default anchor behavior
+        var goTo = this.getAttribute("href"); // store anchor href
+
+        setTimeout(function() {
+            window.location = goTo;
+        }, 1000);
+    });
+    </script>
+</body>
+
+</html>

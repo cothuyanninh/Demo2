@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Live Call</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://act.alz.org/images/content/pagebuilder/purple-phone-icon-md.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/6.2.7/video-js.css">
+    <script src="http://vjs.zencdn.net/6.2.7/video.js"></script>
+    <link rel="stylesheet" type="text/css" href="logo.css">
+    <link rel="stylesheet" type="text/css" href="call-page.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="wrapper">
+            <nav id="nav-bar" class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand" id="logo">
+                        <li><a href=""><span>LIVE</span></a></li>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right" id="">
+                        <li><a href="#">Stream now</a></li>
+                        <li><a href="#">Call now</a></li>
+                        <li><a href="#">Group call</a></li>
+                        <li><a href="#">Karaoke</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="https://graph.facebook.com/100011304962089/picture?type=large&w‌​idth=30&height=30"><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Infomation</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="left-side">
+                <div class="your-video">
+                    <video style="max-width: 1920px;" id="stream-video" class="video-js vjs-default-skin" controls preload autobuffer poster='' data-setup='{ "aspectRatio":"16:9", "playbackRates": [] }'>
+                        <source src="https://r4---sn-oguesnzl.c.drive.google.com/videoplayback?id=eabd9335e28ea2e2&itag=18&source=webdrive&requiressl=yes&pl=21&ttl=transient&ei=gq7qWbrCCMXwugWBxYSADA&driveid=0B8sKT3tIjQRmVHFCQmRXVG5tdnM&app=explorer&mime=video/mp4&lmt=1507384174568542&ip=123.24.206.207&ipbits=0&expire=1508555922&cp=QVNFWkZfVFlQQ1hOOld1a1QxRFlfLWJR&sparams=app,cp,driveid,ei,expire,id,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,pl,requiressl,source,ttl&signature=52663B3DFCA9DC5CD48B840D0FDF7A132B2AEC50.84455625219859478BEC15A18E75FFF0C318E4E6&key=cms1&cpn=qUI6WuNL0gRpC0ZE&c=WEB_EMBEDDED_PLAYER&cver=20171018&redirect_counter=1&cm2rm=sn-i3bzk7s&fexp=23702512&req_id=1a32d2871ccfa3ee&cms_redirect=yes&mm=34&mn=sn-oguesnzl&ms=ltu&mt=1508552243&mv=m" type='video/mp4' />
+                        <source src="https://r4---sn-oguesnzl.c.drive.google.com/videoplayback?id=eabd9335e28ea2e2&itag=18&source=webdrive&requiressl=yes&pl=21&ttl=transient&ei=gq7qWbrCCMXwugWBxYSADA&driveid=0B8sKT3tIjQRmVHFCQmRXVG5tdnM&app=explorer&mime=video/mp4&lmt=1507384174568542&ip=123.24.206.207&ipbits=0&expire=1508555922&cp=QVNFWkZfVFlQQ1hOOld1a1QxRFlfLWJR&sparams=app,cp,driveid,ei,expire,id,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,pl,requiressl,source,ttl&signature=52663B3DFCA9DC5CD48B840D0FDF7A132B2AEC50.84455625219859478BEC15A18E75FFF0C318E4E6&key=cms1&cpn=qUI6WuNL0gRpC0ZE&c=WEB_EMBEDDED_PLAYER&cver=20171018&redirect_counter=1&cm2rm=sn-i3bzk7s&fexp=23702512&req_id=1a32d2871ccfa3ee&cms_redirect=yes&mm=34&mn=sn-oguesnzl&ms=ltu&mt=1508552243&mv=m" type='video/webm' />
+                    </video>
+                    <div class="video-detail">
+                        <h3>PewPew - Sang Nhà (Explicit Version)</h3>
+                        <h4>Watching: 25000 people</h4>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="friend-video">
+                    <video style="max-width: 1920px;" id="stream-video" class="video-js vjs-default-skin" controls preload autobuffer poster='' data-setup='{ "aspectRatio":"16:9", "playbackRates": [] }'>
+                        <source src="lt.mp4" type='video/mp4' />
+                        <source src="" type='video/webm' />
+                    </video>
+                    <div class="video-detail">
+                        <h3>PewPew - Sang Nhà (Explicit Version)</h3>
+                        <h4>Watching: 25000 people</h4>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="online-friend">
+                    <h2>Online Friends</h2>
+                </div>
+            </div>
+            <div class="footer">
+                <address>
+                    Copyright &#9400; K60-N team. All rights reserved
+                    <br> 144 Xuan Thuy, Cau Giay, Ha Noi
+                </address>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
