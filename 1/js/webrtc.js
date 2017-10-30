@@ -336,7 +336,7 @@ var PHONE = window.PHONE = function(config) {
         var video   = myvideo;
         var canvas  = document.createElement('canvas');
         var context = canvas.getContext("2d");
-        var snap    = { width: 240, height: 180 };
+        var snap    = { width: 480, height: 360 };
 
         // Video Settings
         video.width  = snap.width;
