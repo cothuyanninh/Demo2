@@ -308,9 +308,9 @@
 /* Video Box */
 
 #vid-box video{
-    width: 100%;
+    width: 70%;
     height: auto;
-    max-height: 50vh;
+    max-height: 60vh;
     max-width: auto;
     
 }
